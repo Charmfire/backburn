@@ -9,15 +9,11 @@
   outputs = inputs@{ flake-parts, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
-        # To import an internal flake module: ./other.nix
-        # To import an external flake module:
-        #   1. Add foo to inputs
-        #   2. Add foo as a parameter to the outputs function
-        #   3. Add here: foo.flakeModule
+        ./wayland-session
 
       ];
       systems = [ 
-        "x86_64-linux" 
+        "x86_64-linux"
         "aarch64-linux" 
         "aarch64-darwin" 
         "x86_64-darwin" 
@@ -39,11 +35,6 @@
 
       };
       flake = {
-        nixosModules.wayland-session = {pkgs, self, ...}: (import ./wayland-session {inherit pkgs; charm-term = self.packages.${pkgs.system}.charm-term;});
-        # The usual flake attributes can be defined here, including system-
-        # agnostic ones like nixosModule and system-enumerating ones, although
-        # those are more easily expressed in perSystem.
-
       };
     };
 }
