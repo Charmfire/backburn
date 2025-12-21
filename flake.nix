@@ -29,7 +29,7 @@
 
         # Equivalent to  inputs'.nixpkgs.legacyPackages.hello;
         packages = {
-          inherit charm-term;
+          charm-term = charm-term.package;
           default = pkgs.alacritty;
         };
 

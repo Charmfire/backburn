@@ -10,7 +10,7 @@
           [Desktop Entry]
           Name=Backburn (wayland)
           Comment=Wayland session with Cage, charm-term(alacritty), and Zellij
-          Exec=cage ${charm-term}
+          Exec=cage ${charm-term.bin}
           Type=Application
         '';
         name = "backburn-session";
@@ -26,7 +26,7 @@
 
       environment.systemPackages = [
         pkgs.cage
-        charm-term
+        charm-term.package
       ];
     }
   );
