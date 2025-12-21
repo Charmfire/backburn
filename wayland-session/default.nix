@@ -5,7 +5,7 @@
     nixos@{ ... }:
     let
       charm-term = (import ../charm-term { inherit pkgs; });
-      cageAlacrittySession = (pkgs.writeTextDir
+      cageAlacrittySession = pkgs.writeTextDir
         "share/wayland-sessions/backburn.desktop"
         ''
           [Desktop Entry]
@@ -13,14 +13,13 @@
           Comment=Wayland session with Cage, charm-term(alacritty), and Zellij
           Exec=cage ${charm-term}
           Type=Application
-        ''
-      ) {
-        passthru.providedSessions = ["backburn"];
-      };
+        '';
     in
     {
       services.displayManager.sessionPackages = [
-        cageAlacrittySession
+        cageAlacrittySession.overrideAttrs (_: {
+          passthru.providedSessions = [ "backburn.desktop" ];
+        })
       ];
 
       environment.systemPackages = [
