@@ -14,7 +14,8 @@
           Type=Application
         '';
         name = "backburn-session";
-        destination = "share/wayland-sessions/backburn.desktop";
+        destination = "/share/wayland-sessions/backburn.desktop";
+        passthru.providedSessions = [ "backburn" ];
 
       };
     in
