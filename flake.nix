@@ -10,7 +10,7 @@
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
         ./wayland-session
-
+        ./desktop-entry
       ];
       systems = [ 
         "x86_64-linux"
