@@ -5,19 +5,20 @@
     nixos@{ ... }:
     let
       term-emulator = (import backbone/term-emulator { inherit pkgs; });
+      multiplexer = (import backbone/multiplexer {inherit pkgs;});
+
       quick-open = (import ../quick-open {inherit pkgs lib;});
       backburnEntry = pkgs.makeDesktopItem {
         name = "backburn";
         desktopName = "backburn";
-        exec = "${term-emulator.bin}";
+        exec = "${quick-open}";
       };
     in
     {
-
       environment.systemPackages = [
         backburnEntry
-        pkgs.zellij
-        quick-open
+        term-emulator.package
+        multiplexer.package
       ];
     }
   );
