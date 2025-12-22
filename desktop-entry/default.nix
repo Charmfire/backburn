@@ -19,6 +19,7 @@
         backburnEntry
         term-emulator.package
         multiplexer.package
+        quick-open
       ];
     }
   );
