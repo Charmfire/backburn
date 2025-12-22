@@ -4,13 +4,13 @@
     perSystem@{ config, pkgs, ... }:  # NOTE: only explicitly named parameters will be in perSystem; see below
     nixos@{ ... }:
     let
-      charm-term = (import ../charm-term { inherit pkgs; });
+      term-emulator = (import backbone/term-emulator { inherit pkgs; });
       backburnSession = pkgs.writeTextFile {
         text = ''
           [Desktop Entry]
           Name=Backburn (wayland)
-          Comment=Wayland session with Cage, charm-term(alacritty), and Zellij
-          Exec=cage ${charm-term.bin}
+          Comment=Wayland session with Cage, term-emulator(alacritty), and Zellij
+          Exec=cage ${term-emulator.bin}
           Type=Application
         '';
         name = "backburn-session";
@@ -26,7 +26,7 @@
 
       environment.systemPackages = [
         pkgs.cage
-        charm-term.package
+        term-emulator.package
       ];
     }
   );

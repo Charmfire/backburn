@@ -20,7 +20,7 @@
       ];
       perSystem = { config, self', inputs', pkgs, system, lib, ... }: 
       let
-        charm-term = (import ./charm-term { inherit pkgs; });
+        term-emulator = (import backbone/term-emulator { inherit pkgs; });
         quick-open = (import ./quick-open {inherit pkgs lib;});
       in
       {
@@ -30,7 +30,7 @@
 
         # Equivalent to  inputs'.nixpkgs.legacyPackages.hello;
         packages = {
-          charm-term = charm-term.package;
+          term-emulator = term-emulator.package;
           default = pkgs.alacritty;
           inherit quick-open;
         };

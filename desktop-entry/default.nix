@@ -1,20 +1,23 @@
 { moduleWithSystem, ... }:
 {
   flake.nixosModules.desktop-entry = moduleWithSystem (
-    perSystem@{ config, pkgs, ... }:  # NOTE: only explicitly named parameters will be in perSystem; see below
+    perSystem@{ config, pkgs, lib, ... }:  # NOTE: only explicitly named parameters will be in perSystem; see below
     nixos@{ ... }:
     let
-      charm-term = (import ../charm-term { inherit pkgs; });
+      term-emulator = (import backbone/term-emulator { inherit pkgs; });
+      quick-open = (import ../quick-open {inherit pkgs lib;});
       backburnEntry = pkgs.makeDesktopItem {
         name = "backburn";
         desktopName = "backburn";
-        exec = "${charm-term.bin}";
+        exec = "${term-emulator.bin}";
       };
     in
     {
 
       environment.systemPackages = [
         backburnEntry
+        pkgs.zellij
+        quick-open
       ];
     }
   );

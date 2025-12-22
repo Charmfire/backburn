@@ -1,8 +1,8 @@
 {pkgs, lib}: 
 let
-  charm-term = (import ../charm-term { inherit pkgs; });
+  term-emulator = (import ../backbone/term-emulator { inherit pkgs; });
 in
 pkgs.writeShellScriptBin "backburn-quick"
 ''
-  ${charm-term.bin} ${lib.strings.join " " charm-term.args}
+  ${term-emulator.bin} ${lib.strings.join " " term-emulator.args}
 ''
