@@ -1,13 +1,13 @@
 { moduleWithSystem, ... }:
 {
   flake.nixosModules.desktop-entry = moduleWithSystem (
-    perSystem@{ config, pkgs, lib, ... }:  # NOTE: only explicitly named parameters will be in perSystem; see below
+    perSystem@{ config, pkgs, ... }:  # NOTE: only explicitly named parameters will be in perSystem; see below
     nixos@{ ... }:
     let
       term-emulator = (import ../backbone/term-emulator { inherit pkgs; });
       multiplexer = (import ../backbone/multiplexer {inherit pkgs;});
 
-      quick-open = (import ../quick-open {inherit pkgs lib;});
+      quick-open = (import ../quick-open {inherit pkgs;});
       backburnEntry = pkgs.makeDesktopItem {
         name = "backburn";
         desktopName = "backburn";

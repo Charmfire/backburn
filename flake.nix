@@ -18,10 +18,10 @@
         "aarch64-darwin" 
         "x86_64-darwin" 
       ];
-      perSystem = { config, self', inputs', pkgs, system, lib, ... }: 
+      perSystem = { config, self', inputs', pkgs, system, ... }: 
       let
         term-emulator = (import backbone/term-emulator { inherit pkgs; });
-        quick-open = (import ./quick-open {inherit pkgs lib;});
+        quick-open = (import ./quick-open {inherit pkgs;});
       in
       {
         # Per-system attributes can be defined here. The self' and inputs'

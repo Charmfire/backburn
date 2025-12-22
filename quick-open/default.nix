@@ -1,6 +1,7 @@
-{pkgs, lib}: 
+{pkgs}: 
 let
   term-emulator = (import ../backbone/term-emulator { inherit pkgs; });
+  lib = pkgs.lib;
 in
 pkgs.writeShellScriptBin "backburn-quick"
 ''
