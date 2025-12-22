@@ -18,9 +18,10 @@
         "aarch64-darwin" 
         "x86_64-darwin" 
       ];
-      perSystem = { config, self', inputs', pkgs, system, ... }: 
+      perSystem = { config, self', inputs', pkgs, system, lib, ... }: 
       let
         charm-term = (import ./charm-term { inherit pkgs; });
+        quick-open = (import ./quick-open {inherit pkgs lib;});
       in
       {
         # Per-system attributes can be defined here. The self' and inputs'
@@ -31,6 +32,7 @@
         packages = {
           charm-term = charm-term.package;
           default = pkgs.alacritty;
+          inherit quick-open;
         };
 
       };
