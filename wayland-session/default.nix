@@ -4,7 +4,7 @@
     perSystem@{ config, pkgs, ... }:  # NOTE: only explicitly named parameters will be in perSystem; see below
     nixos@{ ... }:
     let
-      term-emulator = (import backbone/term-emulator { inherit pkgs; });
+      term-emulator = (import ../backbone/term-emulator { inherit pkgs; });
       backburnSession = pkgs.writeTextFile {
         text = ''
           [Desktop Entry]

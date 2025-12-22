@@ -4,8 +4,8 @@
     perSystem@{ config, pkgs, lib, ... }:  # NOTE: only explicitly named parameters will be in perSystem; see below
     nixos@{ ... }:
     let
-      term-emulator = (import backbone/term-emulator { inherit pkgs; });
-      multiplexer = (import backbone/multiplexer {inherit pkgs;});
+      term-emulator = (import ../backbone/term-emulator { inherit pkgs; });
+      multiplexer = (import ../backbone/multiplexer {inherit pkgs;});
 
       quick-open = (import ../quick-open {inherit pkgs lib;});
       backburnEntry = pkgs.makeDesktopItem {
