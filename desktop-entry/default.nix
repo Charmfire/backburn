@@ -11,7 +11,7 @@
       backburnEntry = pkgs.makeDesktopItem {
         name = "backburn";
         desktopName = "backburn";
-        exec = "${quick-open}";
+        exec = "${quick-open}/bin/backburn-quick";
       };
     in
     {
