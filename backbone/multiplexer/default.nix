@@ -5,6 +5,6 @@ in {
   package = pkgs.zellij;
   bin = "${pkgs.zellij}/bin/zellij";
   args = [
-    " --config" "${config-file}"
+    "--config" "${config-file}"
     "attach" "-c" "main" ];
 }
