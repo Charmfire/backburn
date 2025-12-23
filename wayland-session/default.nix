@@ -21,6 +21,7 @@
     in
     {
       services.displayManager.sessionPackages = [
+        # all sessions available in XDG_DATA_DIRS/share
         backburnSession
       ];
 
