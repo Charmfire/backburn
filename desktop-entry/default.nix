@@ -12,6 +12,7 @@
         name = "backburn";
         desktopName = "backburn";
         exec = "${quick-open}/bin/backburn-quick";
+        icon = ../../assets/logo-by-chatgpt.png;
       };
     in
     {
