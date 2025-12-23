@@ -1,6 +1,6 @@
 {pkgs} :
 let 
-  config-file = import ./zellij-config.kdl;
+  config-file = ./zellij-config.kdl;
 in {
   package = pkgs.zellij;
   bin = "${pkgs.zellij}/bin/zellij";
