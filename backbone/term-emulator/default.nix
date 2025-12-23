@@ -6,6 +6,8 @@ in
   package = pkgs.alacritty;
   bin = "${pkgs.alacritty}/bin/alacritty";
   args = [  
+     "--title" 
+     "Backburn"
     "--config-file"
     "${config-file}"
     "--hold"
