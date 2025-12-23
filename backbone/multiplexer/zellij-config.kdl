@@ -1,0 +1,6 @@
+keybindings {
+    normal {
+        bind "Ctrl Left" { GoToPreviousTab; }
+        bind "Ctrl Right" { GoToNextTab; }
+    }
+}

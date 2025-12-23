@@ -1,5 +1,10 @@
-{pkgs} : {
+{pkgs} :
+let 
+  config-file = import ./zellij-config.kdl;
+in {
   package = pkgs.zellij;
   bin = "${pkgs.zellij}/bin/zellij";
-  args = [ "attach" "-c" "main" ];
+  args = [
+    " --config" "${config-file}"
+    "attach" "-c" "main" ];
 }
